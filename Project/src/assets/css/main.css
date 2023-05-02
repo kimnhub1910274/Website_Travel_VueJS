@@ -1,0 +1,702 @@
+
+@import './base.css';
+
+html{
+  scroll-behavior: smooth;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+body{
+  margin: 0;
+  padding: 0;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+.d-block{
+  height: 600px;
+}
+section{
+  width: 100%;
+  background-size: cover;
+}
+.chonoi{
+  margin-top: 70px;
+}
+.header{
+  color: #292f35;
+  transition: all ease-in-out 0.3s;
+  margin: 0;
+  width: 100%;
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2000;
+}
+.fixed{
+  background-color: #292f35;
+}
+.gotop{
+  display: none;
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    background: #48a497;
+    bottom: 40px;
+    right: 50px;
+    text-decoration: none;
+    text-align: center;
+    line-height: 50px;
+    color: white;
+    z-index: 2;
+}
+
+footer{
+  padding: 10px 10px;
+  background-color: #292f35;
+  color: white;
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+
+.button-max{
+  width: 100%;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+  opacity: 0.8;
+}
+
+
+/* Extra style for the cancel button (red) */
+.cancelbtn {
+  width: 100%;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+
+
+/* Add padding to containers */
+
+/* The "Forgot password" text */
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+  .cancelbtn {
+    width: 100%;
+  }
+}
+/*Đăng ký*/
+* {box-sizing: border-box}
+
+
+
+input[type=text]:focus, input[type=password]:focus {
+background-color: #ddd;
+outline: none;
+}
+
+hr {
+border: 1px solid #f1f1f1;
+margin-bottom: 25px;
+}
+
+/* Set a style for all buttons */
+.modal-login {
+background-color: #04AA6D;
+color: white;
+padding: 14px 20px;
+margin: 8px 0;
+border: none;
+cursor: pointer;
+width: 100%;
+opacity: 0.9;
+
+}
+
+
+
+
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+float: left;
+width: 50%;
+}
+
+/* Add padding to container elements */
+
+/* Clear floats */
+.clearfix::after {
+content: "";
+clear: both;
+display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+.cancelbtn, .signupbtn {
+  width: 100%;
+}
+}
+ footer.fa-brands{
+  color: white;
+  margin-right: 10px;
+}
+
+.center{
+text-align: justify;
+}
+
+.imgg{
+  margin-left: 100px;
+  margin-right: 200px;
+  width: 600px;
+  height: 400px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+.accordion{
+width: 300px;
+}
+.b {
+  color: black;
+ 
+}
+.log:hover, .menu:hover{
+  background-color: #ec6408;
+}
+label{
+  color: black;
+}
+.log{
+  border: solid 1px;
+  margin-left: 5px;
+}
+/*see more*/
+#more {display: none;}
+.img_tinh{
+  border-radius: 10px;
+  width: 100%;
+  height: 250px;
+  margin-top: 10px;
+}
+.ten{
+  text-align: center;
+}
+.cursor{
+  border-radius: 10px;
+  width: 100%;
+  margin-top: 5px;
+  margin-right: 5px;
+
+}
+
+.nav-link{
+  color: white;
+}
+.p{
+  margin-top: 30px;
+}
+.gt{
+  margin-left: 150px;
+  margin-right: 150px;
+}
+/*tabs*/
+/* Style the tab */
+.tab {
+  overflow: hidden;
+}
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: #04AA6D;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ccc;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color:#ec6408 ;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border-top: none;
+}
+.tabs{
+  width: 300px;
+  height: 200px;
+  border-radius: 5px;
+  margin-left: 40px;
+}
+/*  */
+button{
+  border: none;
+  background:none;
+}
+.btn{
+  border: 1px solid #fff;
+  color: #fff!important;
+  padding: 5px;
+}
+.btn:hover{
+  background-color: #e74c3c;
+  border: 1px solid #e74c3c;
+}
+.search_icon {
+  color: white;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.search{
+  display: flex;
+
+}
+.search input{
+  padding: 10px;
+  color:#000;
+  width: 500px;
+  font-size: 16px;
+  margin: 0px;
+}
+.search button{
+  background-color: #6fcbbe;
+  color: #292f35;
+  padding: 10px;
+}
+.logo{
+  font-size: 40px; 
+  color: #fff; 
+  padding: 0px;
+  font-family: 'Great Vibes', Helvetica, sans-serif;
+}
+.logo:hover{
+  color: #e74c3c;
+}
+.gioithieu_mt{
+  background-color: #6fcbbe;
+}
+.gioithieu_mt h1{
+  color: #fff;
+  font-family: 'Great Vibes', Helvetica, sans-serif;
+  text-shadow: 4px 4px 3px rgba(0,0,0,0.1); 
+  text-align: center;
+}
+.gioithieu_mt p{
+  color: #fff;
+  text-shadow: 4px 4px 3px rgba(0,0,0,0.1); 
+}
+.gioithieu_mt button{
+  color: #fff;
+  text-shadow: 4px 4px 3px rgba(0,0,0,0.1); 
+}
+.gioithieu_mt img{
+  box-shadow: 1px 1px 5px 1px #48a497;
+}
+.bando{
+  box-shadow: 1px 1px 5px 1px #aaa;
+}
+.gioithieu_vn h1{
+  font-family: 'Great Vibes', Helvetica, sans-serif;
+  text-shadow: 4px 4px 3px rgba(0,0,0,0.1); 
+  text-align: center;
+  color: #48a497;
+}
+.card{
+  box-shadow: 1px 1px 10px -2px #aaa;
+  transition: all .3s ease;
+}
+.card:hover{
+  transform: scale(1.03);
+}
+
+.card-body{
+  padding:10px;
+
+}
+.card-title{
+  /* font-family: 'Great Vibes', Helvetica, sans-serif; */
+  text-align: center;
+  margin:0px ;
+}
+.welcom{
+  padding: 40px 0px;
+}
+.welcom h1{
+  font-family: 'Great Vibes', Helvetica, sans-serif;
+  text-shadow: 4px 4px 3px rgba(0,0,0,0.1); 
+  text-align: center;
+  color: #48a497;
+  margin: 0px;
+  padding: 10px;
+
+}
+.welcom p{
+  text-align: center;
+  padding: 5px;
+}
+.item_menu{
+  color: #fff;
+  padding: 5px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.item_menu:hover{
+  color: #e74c3c;
+}
+.active_nav{
+  border-bottom: 2px solid #e74c3c;
+}
+
+ul, li{
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+.navbar-toggler{
+  padding: 5px 10px;
+}
+/* gioi thieu */
+.banner_gt{
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 600;
+}
+
+.gioithieu h1{
+  font-family: 'Great Vibes', Helvetica, sans-serif;
+  text-shadow: 4px 4px 3px rgba(0,0,0,0.1); 
+  text-align: center;
+  color: #48a497;
+}
+.tinh h1{
+  font-family: 'Great Vibes', Helvetica, sans-serif;
+  text-shadow: 4px 4px 3px rgba(0,0,0,0.1); 
+  text-align: center;
+  color: #48a497;
+}
+.tintuc{
+  margin-bottom: 50px;
+}
+.tintuc h1{
+  font-family: 'Great Vibes', Helvetica, sans-serif;
+  text-shadow: 4px 4px 3px rgba(0,0,0,0.1); 
+  text-align: center;
+  color: #48a497;
+}
+.tintuc .col-left a .hover:hover {
+  padding: 0px;
+  color: #000;
+  background-color: #f3f3f3;
+}
+ p{
+  color: #aaa;
+  margin: 0px;
+}
+
+
+.tintuc .col-right .title-name{
+  height: fit-content;
+  padding: 0px;
+  padding-left: 0px;
+  margin-left: 2px;
+  font-weight: 600;
+  font-size: 18px;
+  border-left: 5px solid #dd4c3c;
+}
+.title-news{
+  font-weight: 600;
+}
+.tintuc .title{
+  font-size: 17px;
+  font-weight: 600;
+}
+.dexuat{
+  border:1px solid #d8d8d8; 
+  padding: 10px 5px;
+}
+.dexuat h5{
+  font-weight: 600;
+  color: #e74c3c;
+  font-size: 20px;
+  border-bottom: 1px solid #dd4c3c;
+  padding: 0px;
+  margin-left: 10px;
+  width: fit-content;
+}
+.dexuat p{
+  font-size: 15px;
+}
+
+
+figure.snip0016 {
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+  min-width: 220px;
+  max-width: 310px;
+  max-height: 220px;
+  width: 100%;
+  background: #000000;
+  text-align: left;
+  border-radius: 10px;
+
+}
+figure.snip0016 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+figure.snip0016 img {
+  max-width: 100%;
+  opacity: 1;
+  width: 100%;
+  -webkit-transition: opacity 0.35s;
+  transition: opacity 0.35s;
+  height: 315px;
+}
+figure.snip0016 figcaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 30px 3em;
+  width: 100%;
+  height: 100%;
+}
+figure.snip0016 figcaption::before {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  bottom: 30px;
+  left: 100%;
+  border-left: 4px solid rgba(255, 255, 255, 0.8);
+  content: '';
+  opacity: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  -webkit-transition-delay: 0.6s;
+  transition-delay: 0.6s;
+}
+figure.snip0016 h2,
+figure.snip0016 p {
+  margin: 0 0 5px;
+  opacity: 0;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s,-webkit-transform 0.35s,-moz-transform 0.35s,-o-transform 0.35s,transform 0.35s;
+}
+figure.snip0016 h2 {
+  word-spacing: -0.15em;
+  font-weight: 300;
+  text-transform: uppercase;
+  -webkit-transform: translate3d(30%, 0%, 0);
+  transform: translate3d(30%, 0%, 0);
+  -webkit-transition-delay: 0.3s;
+  transition-delay: 0.3s;
+}
+figure.snip0016 h2 span {
+  font-weight: 800;
+}
+figure.snip0016 p {
+  font-weight: 200;
+  -webkit-transform: translate3d(0%, 30%, 0);
+  transform: translate3d(0%, 30%, 0);
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+figure.snip0016 a {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  color: #ffffff;
+}
+figure.snip0016:hover img {
+  opacity: 0.3;
+}
+figure.snip0016:hover figcaption h2 {
+  opacity: 1;
+  -webkit-transform: translate3d(0%, 0%, 0);
+  transform: translate3d(0%, 0%, 0);
+  -webkit-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+}
+figure.snip0016:hover figcaption p {
+  opacity: 0.9;
+  -webkit-transform: translate3d(0%, 0%, 0);
+  transform: translate3d(0%, 0%, 0);
+  -webkit-transition-delay: 0.6s;
+  transition-delay: 0.6s;
+}
+figure.snip0016:hover figcaption::before {
+  background: rgba(255, 255, 255, 0);
+  left: 30px;
+  opacity: 1;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+/* tintuc1 */
+.tintuc1{
+  font-size: 18px;
+}
+.tintuc1 .col-left{
+  box-shadow: 1px 1px 1px 1px soild #000;
+}
+.tintuc1 .col-left .bong{
+  box-shadow: 0 1px 3px -2px rgba(0,0,0,0.12),0 1px 2px rgba(0,0,0,0.24);
+  padding: 10px 0px;
+}
+.tintuc1 .col-left h3{
+  color: #000;
+  font-weight: 600;
+}
+.tintuc1 .col-left .chuthich p{
+  background-color: #f3f3f3;
+  padding: 10px;
+  text-align: center;
+
+}
+.tintuc1 .col-left span{
+  color: #aaa;
+}
+.tintuc1 .col-left .tacgia{
+  text-align: right;
+  font-weight: 600;
+}
+/*  */
+.wrapper {
+  margin: 10px auto;
+}
+
+.share {
+  padding: 0;
+  margin: 0 auto;
+  max-width: 50px;
+  list-style: none;
+}
+
+.share li {
+  width: 50px;
+  color: #fff;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  position: relative;
+}
+
+li.middle a {
+  left: 0;
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  transition: all .4s ease-in-out 0s;
+}
+
+/* li.middle:hover {
+  li.middle
+} */
+
+.share-icon {
+  background: #568;
+  position: relative;
+  z-index: 1;
+}
+
+a.facebook {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #4264AA;
+}
+
+a.twitter {
+  position: absolute;
+  top: 0;
+  right: 0px;
+  background-color: #6CB7F0;
+}
+
+.share li a {
+  color: #fff;
+  font-size: 18px;
+}
+
+.top {
+  background: #FFAD0F;
+}
+
+.bottom {
+  background: #EA5154;
+}
+
+.share li:hover .facebook {
+  left: -50px;
+}
+
+.share li:hover .twitter {
+  left: 50px;
+}
+
+.share li:hover span {
+  opacity: 1;
+}
+
+.tintuc1 .col-right{
+  padding-top: 10px;
+  padding-left: 10px;
+}
+.tintuc1 .col-right h4{
+  font-weight: 600;
+  border-left: 5px solid #dd4c3c;
+  padding-left: 5px;
+}
+.tintuc1 .col-right a{
+  font-size: 16px;
+}

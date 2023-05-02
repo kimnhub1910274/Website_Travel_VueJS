@@ -1,0 +1,42 @@
+{
+  "name": "contactbook-backend",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vite build",
+    "lint": "vue-cli-service lint",
+    "start": "nodemon server.js",
+    "server": "nodemon server"
+  },
+  "author": "Nhu Le",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.0",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.17.3",
+    "mongodb": "^5.0.1",
+    "mongoose": "^7.0.4",
+    "multer": "^1.4.5-lts.1",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^8.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kimnhub1910274/ct449.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kimnhub1910274/ct449/issues"
+  },
+  "homepage": "https://github.com/kimnhub1910274/ct449#readme",
+  "description": ""
+}

@@ -1,0 +1,49 @@
+
+.logach{
+    width: 800px;
+     height: 245px;
+}
+.hinh1{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+.text1{
+    margin-top: 30px;
+    text-align: justify;
+}
+.hinh2{
+    width: 260px;
+    height:230px;
+    
+}
+.center{
+    text-align: center;
+    
+}
+.button{
+    text-align: right;
+    margin-top: 10px;
+}
+.text4{
+    margin-bottom: 15px;
+}
+
+.ft1{
+    border: 1px solid black;
+    border-bottom: white;
+    padding: 20px 20px;
+}
+.fa-brands{
+    margin-right: 10px;
+    width: 30px;
+}
+.ft2{
+    border: 1px solid black;
+    
+    padding: 20px 20px;
+}
+.chonoi-img{
+    height: 240px;
+}
+
