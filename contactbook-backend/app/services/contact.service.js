@@ -1,5 +1,5 @@
 const { ObjectId } = require("mongodb");
-
+const bcrypt = require('bcrypt');
 class ContactService {
     constructor(client) {
         this.Contact = client.db().collection("contacts");
@@ -20,10 +20,37 @@ class ContactService {
         const contact = this.extractContactData(payload);
         const result = await this.Contact.findOneAndUpdate(
             contact,
-            { $set: { favorite: contact.favorite === true } },
+            { $set:  { create: new Date()}  },
             { returnDocument: "after", upsert: true }
     );
     return result.value;
+    }
+    async login(payload){
+        //console.log(payload)
+        var findUser =  await this.Contact.findOne({
+            email: payload.email,
+        });
+        console.log(findUser);
+        if(findUser){
+            let check = (payload.password, findUser.password);
+            if(check){
+                return {
+                    errCode: 0,
+                    message:"Đăng nhập thành công!",
+                    contact:findUser
+                };
+            }else{
+                return {
+                    errCode: 2,
+                    message:"Sai mật khẩu!"
+                };
+            }
+        }else{
+            return {
+                errCode: 1,
+                message:"Sai email"
+            };
+        }
     }
     //findAll
     async find(filter) {

@@ -23,6 +23,7 @@
     "vue": "^3.2.47",
     "vue-carousel": "^0.18.0",
     "vue-owl-carousel": "^2.0.3",
+    "vue-pdf-embed": "^1.1.6",
     "vue-router": "^4.1.6",
     "vue-ssr-carousel": "^2.2.0",
     "vue3-carousel": "^0.3.0",

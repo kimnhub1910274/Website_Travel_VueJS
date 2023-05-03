@@ -4,10 +4,10 @@ const multer = require("multer");
 const router = express.Router();
 
 
-const PDF_PATH = './assets/images';
+const path = './assets/images';
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null,PDF_PATH)
+      cb(null,path)
     },
     filename: function (req, file, cb) {
         cb(null,file.fieldname + '-' + Date.now() + '-' + file.originalname)

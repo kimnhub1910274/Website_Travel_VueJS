@@ -1,16 +1,51 @@
 <script>
+    import townService from '../services/town.service';
+    import VueEmbed from 'vue-pdf-embed';
     export default {
-        props:{
-            contact:{type: Object, required:true},
+        components:{
+            VueEmbed,
         },
+        props:{
+            id: { type: String, required: true },
+            town:{type: Object, required:true},
+            content: { type: Array,required:true, default:[{
+                nameContent:'',
+                content:''
+            }] },
+        },
+        data() {
+             return {
+                content: [],
+                town: [],
+            };
+        },
+        methods:{
+            async getContent(id) {
+            try {
+                var town = await townService.getContentById(id);
+                console.log(town);
+                this.content = town;
+            } catch (error) {
+               console.log(error);
+            }
+        },
+        },
+        created() {
+        this.getContent(this.id);
+    },
+
     };
 </script>
 
 <template>
     <div class="container">
         <div class="p-1">
-           <h4><b> {{ contact.name }}</b></h4>
+           <h4><b> {{ town.name }}</b></h4>
+           <h4><b> {{ content.nameContent }}</b></h4>
         </div>
+        <div class="container">
+        <img :src="'http://localhost:3000/assets/images/'+content.content" />
+    </div>
         <main>     
       <div class="row">
           <div class="col-sm-8">
@@ -22,7 +57,7 @@
                   </div>
                   <div class="carousel-inner">
                   <div class="carousel-item active">
-                      <img src="images/can-tho/Cau-Can-Tho2.jpg" class="d-block w-100 rounded" alt="..." data-bs-toggle="tooltip"
+                      <img :source="'http://localhost:3000/assets/images/'+content.content" class="d-block w-100 rounded" alt="..." data-bs-toggle="tooltip"
                           data-bs-placement="top" title="Cầu Cần Thơ">
                   </div>
                   <div class="carousel-item">
@@ -63,13 +98,13 @@
               </div>                   
           </div>
           <div class="p1">
-              <h2>Về {{ contact.name }} trải nghiệm </h2>
+              <h2>Về {{ town.name }} trải nghiệm </h2>
               <div class="row" >
                   <div class="col-5">
                       <img class="hinh1"  width="400px" margin-top="10px" src="../assets/images/cantho.jpg" alt="">
                   </div>
                   <div class="col-7">
-                      <p class="text1 " style="text-align: justify; " >{{ contact.description1 }}</p>
+                      <p class="text1 " style="text-align: justify; " >{{ town.description }}</p>
                   </div>
               </div>
           </div>

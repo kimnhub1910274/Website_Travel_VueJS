@@ -9,7 +9,9 @@
 .white{
   color:white
 }
-
+.account{
+  margin-top: 15px;
+}
 
 
 </style>
@@ -21,27 +23,72 @@
   })
   import axios from 'axios'
 import { Field } from 'vee-validate';
+import FormLogin from '../FormLogin.vue';
+import ContactForm from '../ContactForm.vue';
+import ContactService from '@/services/contact.service';
  export default {
   components:{
-    Field
+    Field,
+    FormLogin,
+    ContactForm,
+    ContactService
+    
   },
-  data() {
-    return {
-      form: {
-        email: '',
-        password: '',
-      }
-    }
-  },
-   
-
-  methods: {
-    submitUser() {
-        this.$emit("submit:user", this.userLocal);
+    data() {
+        return {
+            contact: {},
+            username:'',
+            message: "",
+            route: this.$route.query.page
+        };
     },
-  },
-
-  };
+    methods: {
+      async addContact(data) {
+            try {
+                await ContactService.create(data);
+                this.message = "Đăng ký thành công.";
+                this.$router.go(0);
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        async login(data) {
+            try {
+                var login = await ContactService.login(data);
+                this.message = "Đăng nhập thành công.";
+                console.log(login);
+                if(login.errCode == 0){
+                    localStorage.setItem('contact', JSON.stringify(login.contact));
+                    console.log(login.message);
+                    this.contact = {};
+                    this.$router.go(0);
+                    
+                }else{
+                    console.log(login.message);
+                }
+            } catch (error) {
+                console.log("ERROR",error)
+            }
+        },
+        getUserName (){
+        
+            const contact = JSON.parse(localStorage.getItem('contact'));
+            if(contact){
+                this.username = contact.name;
+            }
+            console.log(this.username);
+        },
+        logout(){
+            localStorage.removeItem('contact');
+            this.$router.go(0);
+        }
+            
+      },
+      mounted(){
+        this.getUserName();
+    }
+    
+};
   
 
 </script>
@@ -123,12 +170,24 @@ import { Field } from 'vee-validate';
               </div>
             </nav>
           </div>
-          
-          <!-- Dang nhap -->
-          <button type="button" class="btn ms-2 align-self-center d-sm-none d-md-none d-none d-lg-flex d-xl-flex " data-bs-toggle="modal" data-bs-target="#exampleModal2">
-            Đăng Nhập
-          </button>
-          <!-- Modal -->
+          <div class="account">
+            <div v-if="username == ''">
+              <label for="">
+                <button type="button" class="btn ms-2 align-self-center d-sm-none d-md-none d-none d-lg-flex d-xl-flex " data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                Đăng Nhập
+              </button>
+              </label>
+              <label for="">
+                <button type="button" class="btn ms-2 align-self-center d-sm-none d-md-none d-none d-lg-flex d-xl-flex " data-bs-toggle="modal" data-bs-target="#exampleModal3">
+                Đăng Ký
+              </button>
+              </label>
+            </div>
+            <div v-else style="color: white;">
+                <b> {{ username }}</b>
+                <button type="button" @click="logout" style="color: white;" >Đăng xuất</button>
+            </div>
+          </div>
           <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -137,50 +196,31 @@ import { Field } from 'vee-validate';
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <Form action="" aria-label="" method="" role="form"
-                  @submit="submitUser"
-                  :validation-schema="userForm"
-                  >
-                    <div class="container">
-                      <label for="username"><b>Email</b></label>
-                      <Field 
-                        type="text" 
-                        placeholder="Nhập email" 
-                        name="email" 
-                        v-model="email"
-                        required/>
-                        
-                  
-                      <label for="password"><b>Mật khẩu</b></label>
-                      <Field 
-                        type="password" 
-                        placeholder="Nhập mật khẩu" 
-                        name="password" 
-                        v-model="password"
-                        required/>
-                  
-                      <button type="submit" class="modal-login">Đăng nhập</button>
-                      <label>
-                        <input type="checkbox"  name="remember"> Ghi nhớ tôi
-                      </label>
-                    </div>
-                  
-                    <div class="container" style="background-color:#f1f1f1">
-                      <router-link class="text-decoration-none white cancelbtn text-center" :to="{name:'home'}">
-                            Thoát
-                    </router-link>                      <span class="psw">Quên <a href="#">mật khẩu?</a></span>
-                    </div>
-                  </form>
+                  <FormLogin 
+                  :contact="contact"
+                  @submit:contact="login"
+                  />
                 </div>
               </div>
             </div>
           </div>
-            <!-- Dang ký -->
-            <button type="button" class="btn ms-2 align-self-center d-sm-none d-md-none d-none d-lg-flex d-xl-flex" data-bs-toggle="modal" data-bs-target="#exampleModal3">
-            <router-link :to="{name: 'contact.create'}" class="text-decoration-none white" >
-              Đăng Ký
-            </router-link>
-          </button>
+           
+          <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Đăng Ký</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <ContactForm 
+                    :contact="contact"
+                    @submit:contact="addContact"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
           </div>
       </div>              
     </header>

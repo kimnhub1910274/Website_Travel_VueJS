@@ -28,7 +28,7 @@
                 <TownCard :town="activeTown" />
                 <router-link
                     :to="{
-                        name: 'town.edit',
+                        name: 'town.update',
                         params: { id: activeTown._id },
                     }"
                 >
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-    import TownCard from "@/components/TownCard.vue";
+    import TownCard from "../components/TownCard.vue";
     import InputSearch from "@/components/InputSearch.vue";
     import TownList from "@/components/TownList.vue";
     import TownService from "@/services/town.services";
@@ -111,7 +111,7 @@
             async removeAllTowns() {
                 if (confirm("Bạn muốn xóa tất cả Liên hệ?")) {
                     try {
-                        await TownService.deleteAll();
+                        await TownService.delete();
                         this.refreshList();
                     } catch (error) {
                         console.log(error);

@@ -8,6 +8,9 @@ const usersRouter = require("./app/routes/user.route");
 const townsRouter = require("./app/routes/town.route");
 const ApiError = require("./app/api-error");
 const app = express();
+const testsRouter = require("./app/routes/test");
+app.use("/api/tests",testsRouter);
+
 
 app.use(cors());
 app.use(express.json());

@@ -24,7 +24,7 @@
                 </div>
                 <div v-else-if="townLocal.photo">
                     <p class="mb-0">File name: {{ townLocal.photo }}</p>
-                    <img :src="'http://localhost:3001/assets/images/'+townLocal.photo" class="img-fluid"/>
+                    <img :src="'http://localhost:3000/assets/images/'+townLocal.photo" class="img-fluid"/>
                 </div>
             </div>
 
@@ -108,7 +108,7 @@
             Field,
             ErrorMessage,
         },
-        name: "AddRemove",
+        name: "",
         emits: ["submit:town"],
         props: {
             town: { type: Object, required: true },
@@ -121,11 +121,11 @@
             const townFormSchema = yup.object().shape({
                 name: yup
                     .string()
-                    .required("Name must be valid"),
+                    .required("Bắt buộc"),
                
                 description: yup
                     .string()
-                    .required("Description must be valid"),
+                    .required("Bắt buộc"),
                 
                
                 

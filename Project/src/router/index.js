@@ -1,15 +1,9 @@
 import { createWebHistory, createRouter } from "vue-router";
-import ContactBook from "@/views/ContactBook.vue";
 import Town from "@/views/Town.vue";
 import ListTown from "@/views/ListTown.vue";
 
 
 const routes = [
-    // {
-    //     path: "/",
-    //     name: "travel",
-    //     component: ContactBook,
-    // },
     {
         path: "/:pathMatch(.*)*",
         name: "notfound",
@@ -24,7 +18,13 @@ const routes = [
     {
         path: "/signup/",
         name: "contact.create",
-        component: () => import("@/views/ContactAdd.vue"),
+        component: () => import("@/views/AddUser.vue"),
+        // props: true // Truyền các biến trong $route.params vào làm props
+    },
+    {
+        path: "/login/",
+        name: "contacts.login",
+        component: () => import("@/views/LoginUser.vue"),
         // props: true // Truyền các biến trong $route.params vào làm props
     },
     

@@ -1,6 +1,8 @@
 import createApiClient from "./api.service";
-class TownService {
-    constructor(baseUrl = "/api/towns") {
+import axios from "axios";
+
+class TestService {
+    constructor(baseUrl = "/api/tests") {
         this.api = createApiClient(baseUrl);
     } 
     async getAll() {
@@ -20,5 +22,21 @@ class TownService {
     async delete(id) {
         return (await this.api.delete(`/${id}`)).data;
     }
+    upload(file, onUploadProgress) {
+        let formData = new FormData();
+    
+        formData.append("file", file);
+    
+        return http.post("/upload", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          },
+          onUploadProgress
+        });
+      }
+    
+      getFiles() {
+        return http.get("/files");
+      }
 } 
-export default new TownService();
+export default new TestService();

@@ -38,10 +38,7 @@
             <button type="submit" class="bt modal-login">Đăng ký</button>
                 <router-link class="text-decoration-none white" :to="{name:'home'}">
                     <button  class="bt btn btn-danger">Thoát</button>
-                </router-link>
-            
-            
-           
+                </router-link> 
         </div>
     </Form>
     </div>
@@ -73,7 +70,7 @@
                 .max(50, "E-mail tối đa 50 ký tự."),
                 password: yup.string()
                 .required('Bắt buộc') 
-                .min(5, 'Mật khẩu quá ngắn')
+                .min(6, 'Mật khẩu quá ngắn')
             
         });
         return {
@@ -95,7 +92,7 @@
 </script>
     <style scoped>
     @import "@/assets/form.css";
-    .container {
+    Form {
     border: solid;
     padding: 30px;
     margin-bottom: 20px;

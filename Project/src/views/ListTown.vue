@@ -1,18 +1,18 @@
 <script>
-    import ContactCard from "@/components/ContactCard.vue";
+    import TownCard from "@/components/TownCard.vue";
     import InputSearch from "@/components/InputSearch.vue";
-    import ContactList from "@/components/ContactList.vue";
-    import ContactService from "@/services/test.service";
+    import List from "@/components/List.vue";
+    import TownService from "@/services/town.service";
 
     export default {
         components: {
-            ContactCard,
+            TownCard,
             InputSearch,
-            ContactList,
+            List,
         },
         data() {
             return {
-                contacts: [],
+                towns: [],
                 activeIndex: -1,
                 searchText: "",
             };
@@ -25,38 +25,38 @@
             },
         },
         computed: {
-            // Chuyển các đối tượng contact thành chuỗi để tiện cho tìm kiếm.
-            contactStrings() {
-                return this.contacts.map((contact) => {
-                    const { name, description1, description2  } = contact;
-                    return [name, description1, description2].join("");
+            // Chuyển các đối tượng town thành chuỗi để tiện cho tìm kiếm.
+            townStrings() {
+                return this.towns.map((town) => {
+                    const { name, description1 } = town;
+                    return [name, description1].join("");
                 });
             },
-            // Trả về các contact có chứa thông tin cần tìm kiếm.
-            filteredContacts() {
-                if (!this.searchText) return this.contacts;
-                return this.contacts.filter((_contact, index) =>
-                this.contactStrings[index].includes(this.searchText)
+            // Trả về các town có chứa thông tin cần tìm kiếm.
+            filteredTowns() {
+                if (!this.searchText) return this.towns;
+                return this.towns.filter((_town, index) =>
+                this.townStrings[index].includes(this.searchText)
                 );
             },
-            activeContact() {
+            activeTown() {
                 if (this.activeIndex < 0) return null;
-                    return this.filteredContacts[this.activeIndex];
+                    return this.filteredTowns[this.activeIndex];
                 },
-            filteredContactsCount() {
-                return this.filteredContacts.length;
+            filteredTownsCount() {
+                return this.filteredTowns.length;
             },
         },
         methods: {
-            async retrieveContacts() {
+            async retrieveTowns() {
                 try {
-                    this.contacts = await ContactService.getAll();
+                    this.towns = await TownService.getAll();
                 } catch (error) {
                     console.log(error);
                 }
             },
             refreshList() {
-                this.retrieveContacts();
+                this.retrieveTowns();
                 this.activeIndex = -1;
             },
         },
@@ -75,13 +75,12 @@
             <InputSearch v-model="searchText" />
         </div>
         <div class="">
-            <div v-if="activeContact">
+            <div v-if="activeTown">
                
-                <ContactCard :contact="activeContact" />
+                <TownCard :town="activeTown" />
                 <router-link
                     :to="{
-                        name: 'contact.edit',
-                        params: { id: activeContact._id },
+                        params: { id: activeTown._id },
                     }"
                 >
                 </router-link>
@@ -110,9 +109,9 @@
           </div>
           <h1>Cùng điểm qua 12 tỉnh và 1 thành phố của miền Tây</h1>
           <div class="">
-            <ContactList
-                v-if="filteredContactsCount > 0"
-                :contacts="filteredContacts"
+            <List
+                v-if="filteredTownsCount > 0"
+                :towns="filteredTowns"
                 v-model:activeIndex="activeIndex"
             />
         </div>

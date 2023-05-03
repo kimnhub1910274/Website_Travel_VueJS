@@ -134,8 +134,8 @@ exports.findOneContentById = async (req,res,next)=>{
 }
 
 
-exports.update=async(req,res,next)=>{
-    
+exports.update = async(req,res,next)=>{
+    //console.log(req.body)
     if(Object.keys(req.body).length === 0){
         return next(new ApiError(400, "Data to update can not be empty"));
     }
@@ -150,6 +150,7 @@ exports.update=async(req,res,next)=>{
     }
 };
 exports.updateContent=async(req,res,next)=>{
+    console.log(req.body);
     if(Object.keys(req.body).length === 0){
         return next(new ApiError(400, "Data to update can not be empty"));
     }
@@ -159,7 +160,7 @@ exports.updateContent=async(req,res,next)=>{
         return res.send(document);
     } catch (error) {
         return next(
-            new ApiError(500, `Error updating town with id=${req.params.id}`)
+            new ApiError(500, `Error updating content with id=${req.params.id}`)
         );
     }
 };

@@ -21,7 +21,7 @@ const routes = [
     },
     {
         path: "/update/:id",
-        name: "town.edit",
+        name: "town.update",
         component: () => import("@/views/Edit.vue"),
         props: true // Truyền các biến trong $route.params vào làm props
     },

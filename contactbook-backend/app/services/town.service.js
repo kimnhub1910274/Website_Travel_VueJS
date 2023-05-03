@@ -36,7 +36,7 @@ class TownService {
         if(!findTown){
             const result = await this.Town.findOneAndUpdate(
                 town,
-                { $set: { createAt: new Date()} },
+                { $set: { create: new Date()} },
                 { returnDocument: "after", upsert: true }
             )
             if(result.value){
@@ -75,7 +75,7 @@ class TownService {
                 }
                 var result = await this.Content.findOneAndUpdate(
                     content,
-                    { $set: { createAt: new Date()} },
+                    { $set: { create: new Date()} },
                     { returnDocument: "after", upsert: true }
                 )
                 
@@ -150,10 +150,11 @@ class TownService {
     
 
     async update(id, payload,file) {
+        
         const filter = {
             _id: ObjectId.isValid(id) ? new ObjectId(id) : null,
         };
-        const update = this.extractComicData(payload,file)
+        const update = this.extractTownData(payload,file)
         const result = await this.Town.findOneAndUpdate(
             filter,
             { $set: update },

@@ -45,7 +45,7 @@
     import ContactCard from "@/components/ContactCard.vue";
     import InputSearch from "@/components/InputSearch.vue";
     import ContactList from "@/components/ContactList.vue";
-    import ContactService from "@/services/contact.service";
+    import ContactService from "@/services/town.services";
 
     export default {
         components: {
@@ -114,7 +114,7 @@
                 }
             },
             async goToAddContact() {
-                this.$router.push({ name: "user.signup" });
+                this.$router.push({ name: "contact.create" });
             },
         },
         mounted() {
