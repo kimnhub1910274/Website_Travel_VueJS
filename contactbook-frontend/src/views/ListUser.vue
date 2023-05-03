@@ -22,7 +22,6 @@
                 <h4>
                     Chi tiết Liên hệ
                 </h4>
-                <ContactCard :contact="activeContact" />
                
             </div>
         </div>
@@ -30,14 +29,12 @@
 </template>
 
 <script>
-    import ContactCard from "@/components/ContactCard.vue";
     import InputSearch from "@/components/InputSearch.vue";
     import UserList from "@/components/UserList.vue";
     import ContactService from "@/services/contact.service";
 
     export default {
         components: {
-            ContactCard,
             InputSearch,
             UserList,
         },

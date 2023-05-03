@@ -1,34 +1,34 @@
 <template>
-    <div v-if="contact" class="page">
+    <div v-if="town" class="page">
         <h4>Chỉnh sửa</h4>
-        <ContactForm
-            :contact="contact"
-            @submit:contact="updateContact"
-            @delete:contact="deleteContact"
+        <TownForm
+            :town="town"
+            @submit:town="updateTown"
+            @delete:town="deleteTown"
         />
         <p>{{ message }}</p>
     </div>
 </template>
 <script>
-    import ContactForm from "@/components/ContactForm.vue";
-    import ContactService from "@/services/test.service";
+    import FormTown from "@/components/FormTown.vue";
+    import TownService from "@/services/town.service";
     export default {
         components: {
-            ContactForm
+            FormTown
         },
         props: {
             id: { type: String, required: true },
         },
         data() {
             return {
-                contact: null,
+                town: null,
                 message: "",
             };
         },
         methods: {
-            async getContact(id) {
+            async getTown(id) {
                 try {
-                    this.contact = await ContactService.get(id);
+                    this.town = await TownService.get(id);
                 } catch (error) {
                     console.log(error);
                     // Chuyển sang trang NotFound đồng thời giữ cho URL không đổi
@@ -42,20 +42,20 @@
                 });
             }
         },
-            async updateContact(data) {
+            async updateTown(data) {
                 try {
-                    await ContactService.update(this.contact._id, data);
+                    await TownService.update(this.town._id, data);
 
                     this.message = "Liên hệ được cập nhật thành công.";
                 } catch (error) {
                     console.log(error);
                 }
             },
-            async deleteContact() {
+            async deleteTown() {
                 if (confirm("Bạn muốn xóa Liên hệ này?")) {
                     try {
-                        await ContactService.delete(this.contact._id);
-                        this.$router.push({ name: "contactbook" });
+                        await TownService.delete(this.town._id);
+                        this.$router.push({ name: "town" });
                     } catch (error) {
                         console.log(error);
                     }
@@ -63,7 +63,7 @@
             },
         },
         created() {
-            this.getContact(this.id);
+            this.getTown(this.id);
             this.message = "";
         },
     };

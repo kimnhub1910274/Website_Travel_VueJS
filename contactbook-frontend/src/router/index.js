@@ -1,7 +1,7 @@
 import { createWebHistory, createRouter } from "vue-router";
-import ContactBook from "@/views/ContactBook.vue";
 import Town from "@/views/Town.vue";
 import ListUser from "@/views/ListUser.vue";
+import AddTown from "@/views/AddTown.vue";
 
 const routes = [
     {
@@ -20,15 +20,15 @@ const routes = [
         component: () => import("@/views/NotFound.vue"),
     },
     {
-        path: "/contacts/:id",
-        name: "contact.edit",
-        component: () => import("@/views/ContactEdit.vue"),
+        path: "/update/:id",
+        name: "town.edit",
+        component: () => import("@/views/Edit.vue"),
         props: true // Truyền các biến trong $route.params vào làm props
     },
     {
-        path: "/contacts/",
-        name: "contact.create",
-        component: () => import("@/views/ContactAdd.vue"),
+        path: "/towns/",
+        name: "town.create",
+        component: () => import("@/views/AddTown.vue"),
         // props: true // Truyền các biến trong $route.params vào làm props
     },
     {
@@ -37,9 +37,9 @@ const routes = [
         component: () => import("@/components/admin/Admin.vue"),
     },
     {
-        path: "/add",
+        path: "/addtown",
         name: "add",
-        component: () => import("@/components/image.vue"),
+        component: AddTown,
     },
 ];
 const router = createRouter({

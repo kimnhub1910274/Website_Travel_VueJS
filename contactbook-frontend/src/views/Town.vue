@@ -11,25 +11,25 @@
         </div>  
         <div class="mt-3 col-md-11">
             <div class="mt-3 col-md-7 row  align-items-center">
-                <button class="btn btn-sm btn-success" @click="goToAddContact">
+                <button class="btn btn-sm btn-success" @click="goToAddTown">
                    <b>THÊM</b>
                 </button>
             </div>
-            <ContactList
-                v-if="filteredContactsCount > 0"
-                :contacts="filteredContacts"
+            <TownList
+                v-if="filteredTownsCount > 0"
+                :towns="filteredTowns"
                 v-model:activeIndex="activeIndex"
             />
             <p v-else>Không có liên hệ nào.</p>
             
         </div>
         <div class="col">
-            <div v-if="activeContact">
-                <ContactCard :contact="activeContact" />
+            <div v-if="activeTown">
+                <TownCard :town="activeTown" />
                 <router-link
                     :to="{
-                        name: 'contact.edit',
-                        params: { id: activeContact._id },
+                        name: 'town.edit',
+                        params: { id: activeTown._id },
                     }"
                 >
                     <span class="mt-2 badge badge-warning">
@@ -43,20 +43,20 @@
 </template>
 
 <script>
-    import ContactCard from "@/components/ContactCard.vue";
+    import TownCard from "@/components/TownCard.vue";
     import InputSearch from "@/components/InputSearch.vue";
-    import ContactList from "@/components/ContactList.vue";
-    import ContactService from "@/services/test.service";
+    import TownList from "@/components/TownList.vue";
+    import TownService from "@/services/town.services";
 
     export default {
         components: {
-            ContactCard,
+            TownCard,
             InputSearch,
-            ContactList,
+            TownList,
         },
         data() {
             return {
-                contacts: [],
+                towns: [],
                 activeIndex: -1,
                 searchText: "",
             };
@@ -69,53 +69,57 @@
             },
         },
         computed: {
-            // Chuyển các đối tượng contact thành chuỗi để tiện cho tìm kiếm.
-            contactStrings() {
-                return this.contacts.map((contact) => {
-                    const { name, email, address, phone } = contact;
-                    return [name, email, address, phone].join("");
+            // Chuyển các đối tượng town thành chuỗi để tiện cho tìm kiếm.
+            townStrings() {
+                return this.towns.map((town) => {
+                    const { name } = town;
+                    return [name].join("");
                 });
             },
-            // Trả về các contact có chứa thông tin cần tìm kiếm.
-            filteredContacts() {
-                if (!this.searchText) return this.contacts;
-                return this.contacts.filter((_contact, index) =>
-                this.contactStrings[index].includes(this.searchText)
+            // Trả về các town có chứa thông tin cần tìm kiếm.
+            filteredTowns() {
+                if (!this.searchText) return this.towns;
+                return this.towns.filter((_town, index) =>
+                this.townStrings[index].includes(this.searchText)
                 );
             },
-            activeContact() {
+            activeTown() {
                 if (this.activeIndex < 0) return null;
-                    return this.filteredContacts[this.activeIndex];
+                    return this.filteredTowns[this.activeIndex];
                 },
-            filteredContactsCount() {
-                return this.filteredContacts.length;
+            filteredTownsCount() {
+                return this.filteredTowns.length;
             },
         },
         methods: {
-            async retrieveContacts() {
+            async retrieveTowns() {
                 try {
-                    this.contacts = await ContactService.getAll();
+                    var data = await TownService.getAll();
+                    if(data.errCode == 0){
+                        this.towns = data.towns;
+                    }
                 } catch (error) {
                     console.log(error);
+
                 }
             },
             refreshList() {
-                this.retrieveContacts();
+                this.retrieveTowns();
                 this.activeIndex = -1;
             },
 
-            async removeAllContacts() {
+            async removeAllTowns() {
                 if (confirm("Bạn muốn xóa tất cả Liên hệ?")) {
                     try {
-                        await ContactService.deleteAll();
+                        await TownService.deleteAll();
                         this.refreshList();
                     } catch (error) {
                         console.log(error);
                     }
                 }
             },
-            async goToAddContact() {
-                this.$router.push({ name: "contact.create" });
+            async goToAddTown() {
+                this.$router.push({ name: "town.create" });
             },
         },
         mounted() {
