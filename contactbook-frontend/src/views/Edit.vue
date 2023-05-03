@@ -63,7 +63,6 @@ export default {
                 formDataTown.append('name',data.name);
                 formDataTown.append('photo',data.photo);
                 formDataTown.append('description',data.description);
-
                 var update = await townService.update(this.town._id, formDataTown);
                 console.log(update);
                 if(update && update.errCode == 0){
@@ -76,9 +75,9 @@ export default {
                     var contentUpdate = await townService.updateContent(this.town._id,formData);
                     if(contentUpdate && contentUpdate.errCode == 0){
                         toast.success(contentUpdate.message);
-                        this.$router.push({ name: "list-town" });
+                        this.$router.push({ name: "town.list" });
                     }else{
-                       console.log(contentUpdate.message);
+                        console.log(contentUpdate.message);
                     }
                     
                 }else{

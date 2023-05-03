@@ -150,7 +150,7 @@ exports.update = async(req,res,next)=>{
     }
 };
 exports.updateContent=async(req,res,next)=>{
-    console.log(req.body);
+    //console.log(req.body);
     if(Object.keys(req.body).length === 0){
         return next(new ApiError(400, "Data to update can not be empty"));
     }

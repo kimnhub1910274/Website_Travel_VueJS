@@ -18,7 +18,7 @@ class TownService {
             description: payload.description,
             
         };
-        console.log(town);
+        //console.log(town);
         
         // Remove undefined fields
         Object.keys(town).forEach(
@@ -174,13 +174,13 @@ class TownService {
     }
 
     async updateContent(id, payload,file) {
+        console.log()
         const filter = {
             _idTown: ObjectId.isValid(id) ? new ObjectId(id) : null,
         };  
         if(Array.isArray(file) && file.length){
             console.log('FILE');
             for(var i=0;i<file.length;i++){ 
-                console.log(payload.nameContent.length-file.length);
                 if(file.length > 1){
                     var content = {
                         nameContent: payload.nameContent[i],

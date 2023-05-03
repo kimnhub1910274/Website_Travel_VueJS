@@ -19,11 +19,11 @@
             <input type="file" accept="image/*" @change="previewImage" class="form-control-file" id="photo">
             <div class="border p-2 mt-3">
                 <div v-if="preview">
-                    <p class="mb-0">file name: {{ townLocal.photo.name }}</p>
+                    <p class="mb-0"> {{ townLocal.photo.name }}</p>
                     <img :src="preview" class="img-fluid"/>
                 </div>
                 <div v-else-if="townLocal.photo">
-                    <p class="mb-0">File name: {{ townLocal.photo }}</p>
+                    <p class="mb-0"> {{ townLocal.photo }}</p>
                     <img :src="'http://localhost:3000/assets/images/'+townLocal.photo" class="img-fluid"/>
                 </div>
             </div>
@@ -62,7 +62,6 @@
                     />
                     
                     <div class="border p-2 mt-3">
-                        <p>Xem trước:</p>
                         
                         <div v-if="input.embedSrc">
                             <p >{{ input.content.name }}</p>
@@ -70,7 +69,7 @@
                                 type="video/webm"
                                 :src="input.embedSrc"
                                 width="100%"
-                                style="max-height: 50rem; min-height: 20rem"
+                                style="max-height: 20rem; min-height: 10rem"
                             />
                         </div>
                         <div v-else>
@@ -79,8 +78,8 @@
                                 v-if="input.content"
                                 type="video/webm"
                                 :src="'http://localhost:3000/assets/images/'+input.content"
-                                width="100%"
-                                style="max-height: 70rem; min-height: 20rem"
+                                width="50%"
+                                style="max-height: 20rem; min-height: 20rem"
                             />
                         </div>
                     </div>

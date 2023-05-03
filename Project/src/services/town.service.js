@@ -1,42 +1,23 @@
 import createApiClient from "./api.service";
-import axios from "axios";
-
-class TestService {
-    constructor(baseUrl = "/api/tests") {
+class TownService {
+    constructor(baseUrl = "/api/towns") {
         this.api = createApiClient(baseUrl);
-    } 
-    async getAll() {
-        return (await this.api.get("/")).data;
-    } 
-    async create(data) {
-        return (await this.api.post("/", data)).data;
-    } 
-    async deleteAll() {
-        return (await this.api.delete("/")).data;
-    } 
-    async get(id) {
-        return (await this.api.get(`/${id}`)).data;
-    } 
-    async update(id, data) {
-        return (await this.api.put(`/${id}`, data)).data;}
-    async delete(id) {
-        return (await this.api.delete(`/${id}`)).data;
     }
-    upload(file, onUploadProgress) {
-        let formData = new FormData();
-    
-        formData.append("file", file);
-    
-        return http.post("/upload", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data"
-          },
-          onUploadProgress
-        });
-      }
-    
-      getFiles() {
-        return http.get("/files");
-      }
-} 
-export default new TestService();
+    async getAll() {
+        return (await this.api.get("/getAll")).data;
+    }
+    async get(id) {
+        return (await this.api.get(`get/${id}`)).data;
+    }
+
+    async getContent(id) {
+        return (await this.api.get(`getContent/${id}`)).data;
+    }
+    async getContentById(id) {
+        return (await this.api.get(`getContentById/${id}`)).data;
+    }
+    async findTownByName(search) {
+        return (await this.api.get(`findTownByName/${search}`)).data;
+    }
+}
+export default new TownService();

@@ -53,16 +53,7 @@ const routes = [
         name: "dashboard",
         component:  () => import("@/components/pages/admin/dashboard.vue"),
     },
-    {
-        path: "/test",
-        name: "test",
-        component:  () => import("@/components/pages/cantho.vue"),
-    },
-    {
-        path: "/listtown",
-        name: "listtown",
-        component: Town,
-    },
+
 ];
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),

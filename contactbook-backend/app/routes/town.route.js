@@ -22,8 +22,6 @@ router.route('/createContent').post(upload.array('content',10),town.createConten
 
 router.route('/getAll').get(town.findAll);
 
-router.route('/getTrending').get(town.findTrending);
-
 router.route("/delete/:id").delete(town.delete);
 
 router.route("/deleteContent/:id").delete(town.deleteContent);
