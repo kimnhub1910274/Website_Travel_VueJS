@@ -8,14 +8,7 @@
                 v-if="filteredContactsCount > 0"
                 :contacts="filteredContacts"
             />
-            <p v-else>Không có liên hệ nào.</p>
-            
-            <div class="mt-3 row justify-content-around align-items-center">
-                <button class="btn btn-sm btn-primary" @click="refreshList()">
-                    <i class="fa-solid fa-rotate-right"></i> Làm mới
-                </button>
-                
-            </div>              
+            <p v-else>Không có liên hệ nào.</p>              
         </div>
         <div class="mt-3 col-md-6">
             <div v-if="activeContact">
@@ -88,19 +81,6 @@
                 this.activeIndex = -1;
             },
 
-            async removeAllContacts() {
-                if (confirm("Bạn muốn xóa tất cả tỉnh?")) {
-                    try {
-                        await ContactService.deleteAll();
-                        this.refreshList();
-                    } catch (error) {
-                        console.log(error);
-                    }
-                }
-            },
-            async goToAddContact() {
-                this.$router.push({ name: "contact.create" });
-            },
         },
         mounted() {
             this.refreshList();

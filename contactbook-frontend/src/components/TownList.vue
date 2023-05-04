@@ -45,7 +45,7 @@ img{
                         <td>
                             <img :src="'http://localhost:3000/assets/images/' + town.photo">
                         </td>
-                        <td>{{ town.description }}</td>
+                        <td style="text-align: justify;">{{ town.description }}</td>
                        
                     </tr>
                 </tbody>

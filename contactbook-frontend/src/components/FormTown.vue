@@ -61,7 +61,7 @@
                         @change="onFileChange($event,input)"
                     />
                     <label class="form-label" for="content">Mô tả:</label>
-                    <input name="description"
+                    <textarea name="description"
                         type="text"
                         class="form-control mb-3"
                         v-model="input.description" />   
