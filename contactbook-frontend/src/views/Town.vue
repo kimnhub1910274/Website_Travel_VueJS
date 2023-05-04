@@ -9,7 +9,7 @@
         <div class=" mt-3 col-md-3 " >
             <InputSearch v-model="searchText" />
         </div>  
-        <div class="mt-3 col-md-11">
+        <div class="mt-3 col-md-10">
             <div class="mt-3 col-md-7 row  align-items-center">
                 <button class="btn btn-sm btn-success" @click="goToAddTown">
                    <b>THÊM</b>

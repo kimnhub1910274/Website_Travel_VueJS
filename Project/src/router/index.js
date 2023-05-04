@@ -1,6 +1,8 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Town from "@/views/Town.vue";
 import ListTown from "@/views/ListTown.vue";
+import TownCard from "@/components/TownCard.vue";
+
 
 
 const routes = [
@@ -48,6 +50,13 @@ const routes = [
         name: "town",
         component:  ListTown,
     },
+    {
+        path: "/towncard/:id",
+        name: "town.card",
+        component:  TownCard,
+        props:true
+    },
+
     {
         path: "/admin/dashboard",
         name: "dashboard",

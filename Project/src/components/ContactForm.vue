@@ -92,12 +92,7 @@
 </script>
     <style scoped>
     @import "@/assets/form.css";
-    Form {
-    border: solid;
-    padding: 30px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    }
+
     .bt{
         width: 100%;
         font-size: 18px;

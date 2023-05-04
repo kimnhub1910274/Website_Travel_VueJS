@@ -57,10 +57,14 @@
                         name="content"
                         type="file"
                         class="form-control-file"
-                        accept="pdf/*"
+                        accept="image/*"
                         @change="onFileChange($event,input)"
                     />
-                    
+                    <label class="form-label" for="content">Mô tả:</label>
+                    <input name="description"
+                        type="text"
+                        class="form-control mb-3"
+                        v-model="input.description" />   
                     <div class="border p-2 mt-3">
                         
                         <div v-if="input.embedSrc">
@@ -84,6 +88,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <span>
                     <i class="fas fa-minus-circle" @click="remove(k,input._id)" v-show="k || ( !k && inputs.length > 1)" style="font-size: 20px;cursor: pointer;padding-right: 5px;"></i>
                     <i class="fas fa-plus-circle" @click="add(k)" v-show="k == inputs.length-1" style="font-size: 20px;cursor: pointer;padding-right: 5px;"></i>
@@ -168,6 +173,7 @@
             add(index) {
                 this.inputs.push({
                             nameContent:'',
+                            description:'',
                             content: '',
                             embedSrc:''
                         });

@@ -1,18 +1,18 @@
 <script>
     import TownCard from "@/components/TownCard.vue";
     import InputSearch from "@/components/InputSearch.vue";
-    import List from "@/components/List.vue";
+    import List from "../components/List.vue";
     import TownService from "@/services/town.service";
 
     export default {
         components: {
-            TownCard,
+          TownCard,
             InputSearch,
             List,
         },
         data() {
             return {
-                towns: [],
+              towns: [],
                 activeIndex: -1,
                 searchText: "",
             };
@@ -28,8 +28,8 @@
             // Chuyển các đối tượng town thành chuỗi để tiện cho tìm kiếm.
             townStrings() {
                 return this.towns.map((town) => {
-                    const { name, description1 } = town;
-                    return [name, description1].join("");
+                    const { name, description1, description2  } = town;
+                    return [name, description1, description2].join("");
                 });
             },
             // Trả về các town có chứa thông tin cần tìm kiếm.
@@ -50,7 +50,11 @@
         methods: {
             async retrieveTowns() {
                 try {
-                    this.towns = await TownService.getAll();
+                    var get = await TownService.getAll();
+                    if(get.errCode == 0){
+                        this.towns = get.towns;
+                        console.log(this.towns)
+                    }
                 } catch (error) {
                     console.log(error);
                 }
@@ -75,15 +79,8 @@
             <InputSearch v-model="searchText" />
         </div>
         <div class="">
-            <div v-if="activeTown">
-               
+            <div v-if="activeTown">              
                 <TownCard :town="activeTown" />
-                <router-link
-                    :to="{
-                        params: { id: activeTown._id },
-                    }"
-                >
-                </router-link>
             </div>
         </div>
     </div>
@@ -194,12 +191,6 @@ h3{
     cursor: pointer;
   }
 
-  /* Next & previous buttons */
-  
-
-  img {
-    margin-bottom: -4px;
-  }
 
   .caption-container {
     text-align: center;

@@ -31,7 +31,6 @@ img{
                         <th>Tên tỉnh</th>
                         <th>Hình ảnh</th>
                         <th>Mô tả</th>
-                        <th>Địa điểm</th>
                        
                     </tr>
                 </thead>

@@ -213,14 +213,3 @@ exports.deleteAll = async(_req,res,next)=>{
     }
 };
 
-exports.findTrending = async(_req,res,next)=>{
-    try{
-        const townService = new TownService(MongoDB.client);
-        const documents = await townService.findTrending();
-        return res.send(documents);
-    }catch (error){
-        return next(
-            new ApiError(500, "An error occurred while creating the towns")
-        );
-    }
-};

@@ -16,6 +16,7 @@
 <template>
     <div>
         <div class="row">
+            
             <div class="col-lg-3 col-md-3 col-4"
                 v-for="(town, index) in towns"
                 :key ="town._id"
@@ -23,7 +24,15 @@
                 @click="updateActiveIndex(index)"
              >
                 <p><b class="name">{{ town.name }}</b></p>
+                <router-link
+                    :to="{
+                        name: 'town.card',
+                        params: { id: town._id },
+                    }"
+                >
                 <img :src="'http://localhost:3000/assets/images/' + town.photo" onclick="openModal();currentSlide(1)" class="hover-shadow cursor img-fluid">
+
+                </router-link>
             </div>
 
         </div>

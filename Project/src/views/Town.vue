@@ -78,7 +78,11 @@
         methods: {
             async retrieveTowns() {
                 try {
-                    this.towns = await TownService.getAll();
+                    var get = await TownService.getAll();
+                    if(get.errCode == 0){
+                        this.towns = get.towns;
+                        console.log(this.towns)
+                    }
                 } catch (error) {
                     console.log(error);
                 }

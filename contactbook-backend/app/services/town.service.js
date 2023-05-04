@@ -55,13 +55,14 @@ class TownService {
 
     async createContent(payload,file) {
         const findTown = await this.Town.findOne({
-            name: payload.name
+            name: payload.name,
         })
         if(findTown){
             for(var i=0;i<file.length;i++){ 
                 if(file.length > 1){
                     var content = {
                         nameContent: payload.nameContent[i],
+                        description: payload.description[i],
                         content: file[i].filename,
                         _idTown:findTown._id
                     }
@@ -69,6 +70,7 @@ class TownService {
                 }else{
                     var content = {
                         nameContent: payload.nameContent,
+                        description: payload.description,
                         content: file[i].filename,
                         _idTown:findTown._id
                     }                    
